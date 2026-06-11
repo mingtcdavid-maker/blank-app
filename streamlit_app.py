@@ -7,7 +7,7 @@ st.title("Demo for livetranslate")
 st.write(
     "Record audio below and let the app translate:"
 )
-audio = st.audio_input("Click to record")
+
 
 
 language_from = st.selectbox("Select language inputted.", 
@@ -30,6 +30,8 @@ language_to = st.selectbox("Select language you wish to translate to.",
                                  "hindi"
                                  "tamil"
                              ])
+
+audio = st.audio_input("Click to record")
 
 
 if audio:
