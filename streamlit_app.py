@@ -10,6 +10,28 @@ st.write(
 audio = st.audio_input("Click to record")
 
 
+language_from = st.selectbox("Select language inputted.", 
+                             [
+                                 "singlish"
+                                 "indonesian"
+                                 "malay"
+                                 "filipino"
+                                 "hindi"
+                                 "tamil"
+                             ])
+
+
+language_to = st.selectbox("Select language you wish to translate to.", 
+                             [
+                                 "singlish"
+                                 "indonesian"
+                                 "malay"
+                                 "filipino"
+                                 "hindi"
+                                 "tamil"
+                             ])
+
+
 if audio:
     st.write("Generating response, please wait for 30 seconds.")
 
@@ -19,7 +41,7 @@ if audio:
         files={"file": ("audio.wav", audio, "audio/wav")},
         data={
             "model": "valsea-transcribe",
-            "language": "malay",
+            "language": language_from,
             "response_format": "verbose_json",
         },)
 
@@ -30,8 +52,8 @@ if audio:
             headers = {"Authorization": st.secrets["OPENROUTER_KEY"]},
             json = {"model": "openai/gpt-5.2",
                     "messages": [
-                    {"role": "system", "content": "You are an assistant for SCDF officers responding to live incidents. You are to help translate between the given language and chinese. Do generate the text as plain text."},
-                    {"role": "user", "content": f"{valsea_response.json()} is the user input."}
+                    {"role": "system", "content": "You are an assistant for SCDF officers responding to live incidents. You are to help translate between the given languages. Do generate the text as plain text."},
+                    {"role": "user", "content": f"{valsea_response.json()} is the user input, it is in {language_from}. Please translate it to {language_to}"}
                     ]})
 
     st.write(valsea_response.json()["text"])
