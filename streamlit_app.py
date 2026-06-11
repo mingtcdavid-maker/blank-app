@@ -11,7 +11,7 @@ audio = st.audio_input("Click to record")
 
 
 if audio:
-
+    st.write("Generating response, please wait for 30 seconds.")
 
     valsea_response = requests.post(
         "https://api.valsea.ai/v1/audio/transcriptions",
@@ -30,10 +30,10 @@ if audio:
             headers = {"Authorization": st.secrets["OPENROUTER_KEY"]},
             json = {"model": "openai/gpt-5.2",
                     "messages": [
-                    {"role": "system", "content": "You are a assistant helping to translate english to chinese so as to help users learn the language. Do translate the text as well as explain words used to help understanding."},
+                    {"role": "system", "content": "You are an assistant for SCDF officers responding to live incidents. You are to help translate between the given language and chinese. Do generate the text as plain text."},
                     {"role": "user", "content": f"{valsea_response.json()} is the user input."}
                     ]})
 
-    st.write(valsea_response.json())
+    st.write(valsea_response.json()["text"])
 
-    st.write(chatgpt_response.json())
+    st.write(chatgpt_response.json()["choices"][0]["message"]["content"])
