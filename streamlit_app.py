@@ -34,6 +34,6 @@ if audio:
                     {"role": "user", "content": f"{valsea_response.json()} is the user input."}
                     ]})
 
-st.write(valsea_response.json())
+    st.write(valsea_response.json())
 
-st.write(chatgpt_response.json())
+    st.write(chatgpt_response.json())
