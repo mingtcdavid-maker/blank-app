@@ -13,6 +13,7 @@ st.write(
 language_from = st.selectbox("Select language inputted.", 
                              [
                                  "singlish",
+                                 "chinese",
                                  "indonesian",
                                  "malay",
                                  "filipino",
@@ -24,6 +25,7 @@ language_from = st.selectbox("Select language inputted.",
 language_to = st.selectbox("Select language you wish to translate to.", 
                              [
                                  "singlish",
+                                 "chinese"
                                  "indonesian",
                                  "malay",
                                  "filipino",
