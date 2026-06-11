@@ -1,6 +1,12 @@
 import streamlit as st
+import requests
+import json
 
-st.title("🎈 My new app")
+
+st.title("Demo for livetranslate")
 st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
+    "Record audio below and let the app translate:"
 )
+
+st.audio_input("Click to record")
+
