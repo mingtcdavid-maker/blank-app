@@ -50,7 +50,7 @@ if audio:
             "response_format": "verbose_json",
         },)
 
-
+    st.write("valsea_response.json()")
 
     chatgpt_response = requests.post(
             url = "https://openrouter.ai/api/v1/chat/completions",
