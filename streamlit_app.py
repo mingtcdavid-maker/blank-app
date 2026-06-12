@@ -27,6 +27,7 @@ language_to = st.selectbox("Select language you wish to translate to.",
                                  "singlish",
                                  "english",
                                  "chinese",
+                                 "chinese Hanyu Pinyin"
                                  "indonesian",
                                  "malay",
                                  "filipino",
@@ -58,7 +59,7 @@ if audio:
             json = {"model": "openai/gpt-5.2",
                     "messages": [
                     {"role": "system", "content": "You are an assistant for SCDF officers responding to live incidents. You are to help translate between the given languages. Do generate the text as plain text."},
-                    {"role": "user", "content": f"{valsea_response.json()} is the user input, it is in {language_from}. Please translate it to {language_to}"}
+                    {"role": "user", "content": f"{valsea_response.json()} is the user input, it is in {language_from}. Please translate it to {language_to}."}
                     ]})
 
     st.write(valsea_response.json()["text"])
